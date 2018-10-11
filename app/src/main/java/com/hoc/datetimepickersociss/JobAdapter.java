@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -15,6 +16,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,13 +63,18 @@ public class JobAdapter extends ListAdapter<JobAdapter.JobWrapper, JobAdapter.Vi
         holder.bindTo(getItem(position));
     }
 
-    public void submitListJobs(List<Job> jobs) {
-        this.currentJobs = jobs;
-        List<JobWrapper> wrappers = new ArrayList<>();
+    public void submitListJobs(@Nullable final List<Job> jobs) {
+        currentJobs = jobs != null ? jobs : Collections.emptyList();
+        submitList(mapToListWrappers(currentJobs));
+    }
+
+    @NonNull
+    private List<JobWrapper> mapToListWrappers(@NonNull List<Job> jobs) {
+        List<JobWrapper> wrappers = new ArrayList<>(jobs.size());
         for (Job job : jobs) {
             wrappers.add(new JobWrapper(job, expandedItems.contains(job)));
         }
-        submitList(wrappers);
+        return wrappers;
     }
 
     @FunctionalInterface

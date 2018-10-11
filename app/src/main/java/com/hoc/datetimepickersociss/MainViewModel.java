@@ -66,6 +66,7 @@ public class MainViewModel extends ViewModel {
 
     void setHourMinute(int hourOfDay, int minute) {
         final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(getDate());
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
         calendar.set(Calendar.MINUTE, minute);
         mDate.setValue(calendar.getTime());

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DateTimePicker Sociss</string>
+    <string name="job_list">Danh sách công việc:</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="add_job">Thêm công việc</string>
+    <string name="finished_time">Giờ hoàn thành:</string>
+    <string name="finished_date">Ngày hoàn thành:</string>
+    <string name="content">Nội dung:</string>
+    <string name="job">Công việc:</string>
+    <string name="manage_job_in_week">Quản lí công việc hàng tuần</string>
+</resources>
